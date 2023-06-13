@@ -1,11 +1,22 @@
-import React from 'react';
-import './App.css';
+// src/App.js
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Favorites from './components/Favorites';
+import Search from './components/Search';
+
+const App = () => {
   return (
-    <div className="App">
-      {/* Here we will use our components */}
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+    </Router>
   );
 }
 
