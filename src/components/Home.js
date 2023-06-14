@@ -2,19 +2,19 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Home.css';
 
 const Home = () => {
     const [coins, setCoins] = useState([]);
     const [showMoreInfo, setShowMoreInfo] = useState(null);
 
-
     const toggleMoreInfo = (id) => {
         if (showMoreInfo === id) {
-          setShowMoreInfo(null);
+            setShowMoreInfo(null);
         } else {
-          setShowMoreInfo(id);
+            setShowMoreInfo(id);
         }
-      }
+    }
 
     useEffect(() => {
         axios
@@ -27,17 +27,16 @@ const Home = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Home Page</h1>
+        <div className="container">
             {coins.map(coin => {
                 return (
-                    <div key={coin.id}>
+                    <div key={coin.id} className="coin-item">
                         <h4>{coin.name}</h4>
                         <img 
-                        src={coin.image} 
-                        alt={coin.name} 
-                        onClick={() => toggleMoreInfo(coin.id)}
-                        style={{cursor: 'pointer'}}
+                            src={coin.image} 
+                            alt={coin.name} 
+                            onClick={() => toggleMoreInfo(coin.id)}
+                            className="coin-image"
                         />
                         <p>Current Price: ${coin.current_price}</p>
                         <p>Market Cap: ${coin.market_cap}</p>
