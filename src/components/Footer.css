@@ -1,0 +1,15 @@
+/* src/components/Footer.css */
+
+
+.footer {
+  position: relative;
+  width: 100%;
+  background-color: #ffad33;
+  color: white;
+  text-align: center;
+  padding: 1px 0;
+  box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* If you want to add additional styles, you can do so here. */
