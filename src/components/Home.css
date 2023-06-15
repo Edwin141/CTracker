@@ -1,20 +1,30 @@
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .coin-item {
-    flex: 1 0 21%; /* will allow four items in a row at most */
-    margin: 1%;
-    box-shadow: 0 0 10px lightgray;
-    padding: 1em;
-    background-color: #f9f9f9;
-  }
-  
-  .coin-image {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Adjust size as needed */
-    cursor: pointer;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.coin-item {
+  flex: 1 0 21%; /* will allow four items in a row at most */
+  margin: 1%;
+  box-shadow: 0 0 10px lightgray;
+  padding: 1em;
+  background-color: #f9f9f9;
+}
+
+.coin-image {
+  width: 100px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.coin-section {
+  display: flex;
+  align-items: center;
+}
+
+.coin-chart {
+  padding: 10px;
+  margin-top: 10px;
+}
