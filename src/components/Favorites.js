@@ -3,14 +3,24 @@ import React, { useContext } from 'react';
 import { LineChart, Line } from 'recharts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
-import AppContext from './AppContext'; // Import the context
+import AppContext from './AppContext';
 
 const Favorites = () => {
-    const { favoriteCoins, coins, toggleFavorite } = useContext(AppContext); // Use the context
+    const { favoriteCoins, coins, toggleFavorite } = useContext(AppContext);
+
+    if (!coins) {
+        return <div>Loading...</div>;
+    }
+
+    const favoriteCoinsData = coins.filter(coin => favoriteCoins.has(coin.id));
+    
+    if(favoriteCoinsData.length === 0) {
+        return <div className="container"><p>No favorite coins yet. Click on a star to add a coin to your favorites.</p></div>
+    }
 
     return (
         <div className="container">
-            {coins.filter(coin => favoriteCoins.has(coin.id)).map(coin => (
+            {favoriteCoinsData.map(coin => (
                 <div key={coin.id} className="coin-item">
                     <div className="coin-section">
                         <img src={coin.image} alt={coin.name} className="coin-image" />
