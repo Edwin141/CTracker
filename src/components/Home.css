@@ -10,6 +10,8 @@
   box-shadow: 0 0 10px lightgray;
   padding: 1em;
   background-color: #f9f9f9;
+  position: relative;
+
 }
 
 .coin-image {
@@ -30,7 +32,9 @@
 }
 
 .favorite-icon {
-  float: right;
+  position: absolute;
+  top: 10px; /* adjust as needed */
+  left: 10px; /* adjust as needed */
   color: #FF9700;
 }
 .favorite-icon:hover {
