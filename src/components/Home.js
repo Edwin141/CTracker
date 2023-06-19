@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+// Home.js
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { LineChart, Line } from 'recharts';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import AppContext from './AppContext'; // Import the context
 import './Home.css';
 
 const Home = () => {
   const [coins, setCoins] = useState([]);
   const [showMoreInfo, setShowMoreInfo] = useState(null);
+  const { favoriteCoins, toggleFavorite } = useContext(AppContext); // Use the context
 
   const toggleMoreInfo = (id) => {
     if (showMoreInfo === id) {
@@ -19,7 +25,7 @@ const Home = () => {
     axios
       .get('/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false')
       .then(res => {
-        const fetchedCoins = res.data;
+        const fetchedCoins = res.data.filter(coin => coin.id !== "staked-ether" && coin.id !== "usd-coin"); 
         return Promise.all(
           fetchedCoins.map(coin =>
             axios
@@ -49,7 +55,11 @@ const Home = () => {
                 onClick={() => toggleMoreInfo(coin.id)}
                 className="coin-image"
               />
-
+              <FontAwesomeIcon
+                icon={favoriteCoins.has(coin.id) ? solidStar : regularStar}
+                onClick={() => toggleFavorite(coin.id)}
+                className="favorite-icon"
+              />
               <div className="coin-chart">
                 <LineChart width={200} height={100} data={coin.coinHistory}>
                   <Line type="monotone" dataKey="value" stroke="#FF9700" dot={false} />
