@@ -1,6 +1,6 @@
 CryptoTracker (CTracker)
 
-CryptoTracker is a simple React web application that allows users to track cryptocurrency prices. The application fetches real-time data from the CoinGecko API and presents it in an intuitive and user-friendly interface.
+CryptoTracker is a React web application that allows users to track cryptocurrency prices. The application fetches real-time data from the CoinGecko API and presents it in an intuitive and user-friendly interface.
 
 About the Project:
 
